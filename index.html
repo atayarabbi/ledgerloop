@@ -221,6 +221,52 @@
   .principle h3{ font-size:1.05rem; margin-top:10px; }
   .principle p{ margin-top:8px; color:var(--ink-soft); font-size:0.88rem; }
 
+
+  /* ---------- social links ---------- */
+  .social-bar{
+    width:100%;
+    margin-top:8px;
+  }
+  .social-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+  }
+  .social-item{
+    margin:0;
+    padding:0;
+  }
+  .social-item a{
+    width:48px;
+    height:48px;
+    border:1px solid rgba(247,244,236,0.55);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    transition:all .2s ease;
+    background:rgba(255,255,255,0.04);
+  }
+  .social-item a:hover{
+    transform:translateY(-3px);
+    background:var(--paper);
+    border-color:var(--paper);
+  }
+  .social-item img{
+    width:25px;
+    height:25px;
+    display:block;
+  }
+  @media(max-width:640px){
+    .social-list{ gap:10px; }
+    .social-item a{ width:44px; height:44px; }
+  }
+
   /* ---------- contact / footer ---------- */
   .contact-panel{
     background:var(--forest); color:var(--paper);
@@ -404,7 +450,7 @@
          rel="noreferrer noopener"
          aria-label="WhatsApp">
         <img
-          src="https://cdn.simpleicons.org/whatsapp/25"
+          src="https://cdn.simpleicons.org/whatsapp"
           alt="WhatsApp"
           width="25"
           height="25">
@@ -418,7 +464,7 @@
          rel="noreferrer noopener"
          aria-label="LinkedIn">
         <img
-          src="https://cdn.simpleicons.org/linkedin/25"
+          src="https://cdn.simpleicons.org/linkedin"
           alt="LinkedIn"
           width="25"
           height="25">
@@ -430,7 +476,7 @@
       <a href="mailto:atayarabbi44544@gmail.com"
          aria-label="Gmail">
         <img
-          src="https://cdn.simpleicons.org/gmail/25"
+          src="https://cdn.simpleicons.org/gmail"
           alt="Gmail"
           width="25"
           height="25">
@@ -444,7 +490,7 @@
          rel="noreferrer noopener"
          aria-label="Fiverr">
         <img
-          src="https://cdn.simpleicons.org/fiverr/25"
+          src="https://cdn.simpleicons.org/fiverr"
           alt="Fiverr"
           width="25"
           height="25">
