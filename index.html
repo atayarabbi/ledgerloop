@@ -228,13 +228,19 @@
     margin-top:8px;
   }
   .social-list{
-    list-style:none;
-    margin:0;
-    padding:0;
+    list-style:none !important;
+    list-style-type:none !important;
+    margin:0 !important;
+    padding:0 !important;
     display:flex;
     align-items:center;
     justify-content:center;
     gap:14px;
+  }
+  .social-list li::before,
+  .social-list li::after{
+    content:none !important;
+    display:none !important;
   }
   .social-item{
     margin:0;
@@ -450,7 +456,7 @@
          rel="noreferrer noopener"
          aria-label="WhatsApp">
         <img
-          src="https://cdn.simpleicons.org/whatsapp"
+          src="https://cdn.simpleicons.org/whatsapp/25D366"
           alt="WhatsApp"
           width="25"
           height="25">
@@ -464,7 +470,7 @@
          rel="noreferrer noopener"
          aria-label="LinkedIn">
         <img
-          src="https://cdn.simpleicons.org/linkedin"
+          src="https://cdn.simpleicons.org/linkedin/0A66C2"
           alt="LinkedIn"
           width="25"
           height="25">
@@ -476,7 +482,7 @@
       <a href="mailto:atayarabbi44544@gmail.com"
          aria-label="Gmail">
         <img
-          src="https://cdn.simpleicons.org/gmail"
+          src="https://cdn.simpleicons.org/gmail/EA4335"
           alt="Gmail"
           width="25"
           height="25">
@@ -490,7 +496,7 @@
          rel="noreferrer noopener"
          aria-label="Fiverr">
         <img
-          src="https://cdn.simpleicons.org/fiverr"
+          src="https://cdn.simpleicons.org/fiverr/1DBF73"
           alt="Fiverr"
           width="25"
           height="25">
