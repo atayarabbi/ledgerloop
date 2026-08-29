@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LedgerLoop — Cloud Accounting & Bookkeeping by Md. Ataya Rabbi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F4EC;
+    --paper-dim:#EFEADB;
+    --ink:#1C2B39;
+    --ink-soft:#4B5A66;
+    --forest:#2E4F3A;
+    --forest-dark:#1F3A29;
+    --brass:#A9834F;
+    --brass-soft:#C8A876;
+    --rule:#D8D2C0;
+    --card:#FFFFFF;
+    --radius:4px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    margin:0;
+    color:var(--ink);
+  }
+  .mono{
+    font-family:'IBM Plex Mono',monospace;
+  }
+  a{color:inherit;}
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  @media(max-width:640px){ .wrap{padding:0 20px;} }
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(247,244,236,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--rule);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 0;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces',serif; font-weight:600; font-size:1.05rem;
+    letter-spacing:0.01em;
+  }
+  .brand .mark{
+    width:30px;height:30px;border-radius:50%;
+    border:1.5px solid var(--forest);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'IBM Plex Mono',monospace; font-size:0.72rem; font-weight:600;
+    color:var(--forest);
+  }
+  nav.links{ display:flex; gap:28px; font-size:0.88rem; }
+  nav.links a{ text-decoration:none; color:var(--ink-soft); transition:color .2s; }
+  nav.links a:hover{ color:var(--forest); }
+  .nav-cta{
+    font-size:0.82rem; padding:9px 18px;
+    background:var(--forest); color:var(--paper);
+    border-radius:2px; text-decoration:none;
+    font-family:'IBM Plex Mono',monospace;
+    transition:background .2s;
+  }
+  .nav-cta:hover{ background:var(--forest-dark); }
+  @media(max-width:720px){ nav.links{ display:none; } }
+
+  /* ---------- hero: open ledger ---------- */
+  .hero{
+    padding:72px 0 40px;
+  }
+  .ledger{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    border:1px solid var(--rule);
+    background:var(--card);
+    box-shadow:0 1px 0 var(--rule), 0 24px 48px -32px rgba(28,43,57,0.35);
+    position:relative;
+  }
+  .ledger::after{
+    content:'';
+    position:absolute; left:50%; top:0; bottom:0; width:1px;
+    background:linear-gradient(var(--rule),var(--rule)) center/1px 100% no-repeat;
+    box-shadow:-6px 0 10px -8px rgba(0,0,0,0.15), 6px 0 10px -8px rgba(0,0,0,0.15);
+  }
+  @media(max-width:800px){
+    .ledger{ grid-template-columns:1fr; }
+    .ledger::after{ display:none; }
+  }
+  .ledger-left, .ledger-right{ padding:48px 44px; }
+  @media(max-width:640px){ .ledger-left, .ledger-right{ padding:32px 26px; } }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:0.72rem;
+    letter-spacing:0.12em; text-transform:uppercase; color:var(--brass);
+    margin-bottom:16px; display:block;
+  }
+  .hero h1{
+    font-size:2.5rem; line-height:1.08; letter-spacing:-0.01em;
+  }
+  @media(max-width:640px){ .hero h1{ font-size:1.9rem; } }
+  .hero p.lead{
+    margin-top:18px; color:var(--ink-soft); font-size:1.02rem; max-width:46ch;
+  }
+  .hero-ctas{ margin-top:28px; display:flex; gap:14px; flex-wrap:wrap; }
+  .btn-primary{
+    background:var(--forest); color:var(--paper); text-decoration:none;
+    padding:13px 22px; font-size:0.88rem; font-family:'IBM Plex Mono',monospace;
+    border-radius:2px; transition:background .2s;
+  }
+  .btn-primary:hover{ background:var(--forest-dark); }
+  .btn-ghost{
+    border:1px solid var(--ink); color:var(--ink); text-decoration:none;
+    padding:12px 22px; font-size:0.88rem; font-family:'IBM Plex Mono',monospace;
+    border-radius:2px; transition:all .2s;
+  }
+  .btn-ghost:hover{ background:var(--ink); color:var(--paper); }
+
+  /* trial balance widget — signature element */
+  .tb-title{
+    font-family:'IBM Plex Mono',monospace; font-size:0.72rem;
+    letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft);
+    margin-bottom:14px; display:flex; justify-content:space-between;
+  }
+  .tb-row{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:9px 0; border-bottom:1px dashed var(--rule);
+    font-family:'IBM Plex Mono',monospace; font-size:0.88rem;
+  }
+  .tb-row span:first-child{ color:var(--ink-soft); }
+  .tb-total{
+    display:flex; justify-content:space-between; align-items:center;
+    margin-top:16px; padding-top:14px; border-top:1.5px solid var(--ink);
+    font-family:'IBM Plex Mono',monospace; font-weight:600;
+  }
+  .tb-status{
+    display:inline-flex; align-items:center; gap:6px;
+    color:var(--forest); opacity:0; transform:translateY(4px);
+    transition:opacity .5s ease, transform .5s ease;
+  }
+  .tb-status.show{ opacity:1; transform:translateY(0); }
+  .tb-status .stamp{
+    width:18px;height:18px;border-radius:50%;border:1.5px solid var(--forest);
+    display:flex;align-items:center;justify-content:center;font-size:0.65rem;
+  }
+
+  /* ---------- section shell ---------- */
+  section{ padding:88px 0; border-bottom:1px solid var(--rule); }
+  section:last-of-type{ border-bottom:none; }
+  .section-head{ margin-bottom:44px; max-width:56ch; }
+  .section-head .eyebrow{ margin-bottom:12px; }
+  .section-head h2{ font-size:1.9rem; letter-spacing:-0.01em; }
+  .section-head p{ margin-top:14px; color:var(--ink-soft); }
+
+  /* ---------- about / credentials ---------- */
+  .about-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:start;
+  }
+  @media(max-width:800px){ .about-grid{ grid-template-columns:1fr; gap:36px; } }
+  .about-grid p{ color:var(--ink-soft); margin:0 0 16px; }
+  .credential-list{ list-style:none; margin:0; padding:0; }
+  .credential-list li{
+    display:flex; gap:14px; padding:14px 0; border-bottom:1px solid var(--rule);
+    font-size:0.94rem;
+  }
+  .credential-list li:first-child{ border-top:1px solid var(--rule); }
+  .credential-list .num{
+    font-family:'IBM Plex Mono',monospace; color:var(--brass); font-size:0.8rem; flex-shrink:0;
+  }
+  .tool-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
+  .tool-tags span{
+    font-family:'IBM Plex Mono',monospace; font-size:0.76rem;
+    border:1px solid var(--rule); padding:6px 12px; border-radius:2px; color:var(--ink-soft);
+  }
+
+  /* ---------- services: ledger line items ---------- */
+  .service-book{
+    border:1px solid var(--rule); background:var(--card);
+  }
+  .service-row{
+    display:grid; grid-template-columns:64px 1fr; gap:0;
+    border-bottom:1px solid var(--rule);
+  }
+  .service-row:last-child{ border-bottom:none; }
+  .service-row .idx{
+    font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--brass);
+    padding:22px 0 22px 24px; border-right:1px solid var(--rule);
+    display:flex; align-items:flex-start;
+  }
+  .service-row .body{ padding:20px 24px; }
+  .service-row h3{ font-size:1.05rem; font-weight:600; margin-bottom:4px; }
+  .service-row p{ margin:0; color:var(--ink-soft); font-size:0.92rem; }
+
+  /* ---------- why / principles ---------- */
+  .principles{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--rule); border:1px solid var(--rule);
+  }
+  @media(max-width:800px){ .principles{ grid-template-columns:repeat(2,1fr); } }
+  .principle{
+    background:var(--card); padding:30px 24px;
+  }
+  .principle .mono{ font-size:0.72rem; color:var(--brass); letter-spacing:0.08em; }
+  .principle h3{ font-size:1.05rem; margin-top:10px; }
+  .principle p{ margin-top:8px; color:var(--ink-soft); font-size:0.88rem; }
+
+  /* ---------- contact / footer ---------- */
+  .contact-panel{
+    background:var(--forest); color:var(--paper);
+    padding:64px 44px; text-align:left;
+    display:grid; grid-template-columns:1.2fr 0.8fr; gap:40px; align-items:center;
+  }
+  @media(max-width:800px){ .contact-panel{ grid-template-columns:1fr; padding:44px 26px; } }
+  .contact-panel h2{ color:var(--paper); font-size:1.9rem; }
+  .contact-panel p{ color:#D8E3D9; margin-top:14px; max-width:44ch; }
+  .contact-actions{ display:flex; flex-direction:column; gap:12px; }
+  .contact-actions a{
+    text-decoration:none; text-align:center;
+    font-family:'IBM Plex Mono',monospace; font-size:0.85rem;
+    padding:14px 20px; border-radius:2px;
+  }
+  .contact-actions .fill{ background:var(--paper); color:var(--forest-dark); }
+  .contact-actions .outline{ border:1px solid var(--paper); color:var(--paper); }
+  .contact-note{
+    font-size:0.78rem; color:#B9CCBB; margin-top:18px; font-family:'IBM Plex Mono',monospace;
+  }
+
+  footer{
+    padding:32px 0; text-align:center;
+    font-family:'IBM Plex Mono',monospace; font-size:0.76rem; color:var(--ink-soft);
+  }
+
+  ::selection{ background:var(--brass-soft); color:var(--ink); }
+  :focus-visible{ outline:2px solid var(--forest); outline-offset:2px; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .tb-status{ transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand"><span class="mark">LL</span> LedgerLoop</div>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#principles">Why me</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="#contact">Message me →</a>
+  </div>
+</header>
+
+<section class="hero wrap" style="border-bottom:none; padding-top:56px; padding-bottom:0;">
+  <div class="ledger">
+    <div class="ledger-left">
+      <span class="eyebrow">LedgerLoop — Cloud Accounting &amp; Bookkeeping</span>
+      <h1>Your books, balanced — down to the last cent.</h1>
+      <p class="lead">Run by Md. Ataya Rabbi, Chartered Accountant (Part Qualified) with 9+ years managing bookkeeping for small businesses on QuickBooks Online, Xero, and Wave. Accurate, audit-ready, and one message away.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="#contact">Message me before ordering</a>
+        <a class="btn-ghost" href="#services">See services</a>
+      </div>
+    </div>
+    <div class="ledger-right">
+      <div class="tb-title"><span>Trial Balance</span><span>This Month</span></div>
+      <div class="tb-row"><span>Bank &amp; Card Reconciliation</span><span>Reconciled</span></div>
+      <div class="tb-row"><span>Accounts Receivable</span><span>Current</span></div>
+      <div class="tb-row"><span>Accounts Payable</span><span>Current</span></div>
+      <div class="tb-row"><span>Payroll</span><span>Processed</span></div>
+      <div class="tb-row"><span>Financial Statements</span><span>Ready</span></div>
+      <div class="tb-total">
+        <span>Debits = Credits</span>
+        <span class="tb-status" id="tbStatus"><span class="stamp">✓</span> BALANCED</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div>
+      <span class="eyebrow">About</span>
+      <h2>Precision is the whole job.</h2>
+      <p>LedgerLoop is run by me, Md. Ataya Rabbi — a professional accountant and bookkeeper, certified ProAdvisor of QuickBooks Online and Xero Advisor Certified, with more than 9 years of hands-on experience in cloud accounting and bookkeeping for small businesses.</p>
+      <p>I keep books according to GAAP and IRS rules, so your financials stay tax-compliant and audit-ready year-round — not just at filing time.</p>
+      <p>I believe in 100% client fulfilment through accuracy, efficiency, and quality of every deliverable. Kindly message me before placing any order so we can scope the work properly.</p>
+      <div class="tool-tags">
+        <span>QuickBooks Online</span><span>Xero</span><span>Wave</span><span>Microsoft Excel</span>
+        <span>QuickBooks Payroll</span><span>Gusto</span>
+      </div>
+    </div>
+    <ul class="credential-list">
+      <li><span class="num">01</span> Chartered Accountant (Part Qualified)</li>
+      <li><span class="num">02</span> Certified QuickBooks Online ProAdvisor</li>
+      <li><span class="num">03</span> Xero Advisor Certified</li>
+      <li><span class="num">04</span> 9+ years bookkeeping &amp; cloud accounting experience</li>
+      <li><span class="num">05</span> GAAP &amp; IRS-compliant, audit-ready books</li>
+    </ul>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Services</span>
+      <h2>What I handle, line by line.</h2>
+      <p>Full-cycle bookkeeping support — from setup to clean, tax-ready financials.</p>
+    </div>
+    <div class="service-book">
+      <div class="service-row">
+        <div class="idx">01</div>
+        <div class="body"><h3>Software Setup</h3><p>QuickBooks Online and Xero set up correctly from day one, with a chart of accounts built for your business.</p></div>
+      </div>
+      <div class="service-row">
+        <div class="idx">02</div>
+        <div class="body"><h3>Transaction Categorization</h3><p>Expenses tracked and categorised accurately, so every report reflects reality.</p></div>
+      </div>
+      <div class="service-row">
+        <div class="idx">03</div>
+        <div class="body"><h3>Invoices, Bills &amp; Journals</h3><p>Invoices, bills, adjusting journals, refunds, credit notes, inventory purchases, and bank transactions.</p></div>
+      </div>
+      <div class="service-row">
+        <div class="idx">04</div>
+        <div class="body"><h3>Payroll</h3><p>Payroll setup and management with QuickBooks Payroll and Gusto.</p></div>
+      </div>
+      <div class="service-row">
+        <div class="idx">05</div>
+        <div class="body"><h3>Clean-up &amp; Catch-up</h3><p>Behind on your books? I clean up and catch up transactions to bring everything current.</p></div>
+      </div>
+      <div class="service-row">
+        <div class="idx">06</div>
+        <div class="body"><h3>Reconciliation</h3><p>Bank, credit card, and PayPal reconciliation, done monthly or on your schedule.</p></div>
+      </div>
+      <div class="service-row">
+        <div class="idx">07</div>
+        <div class="body"><h3>AR &amp; AP Management</h3><p>Accounts receivable and payable maintained so cash flow stays visible and current.</p></div>
+      </div>
+      <div class="service-row">
+        <div class="idx">08</div>
+        <div class="body"><h3>Financial Reports</h3><p>Balance sheets, profit &amp; loss, and cash flow statements — ready whenever you need them.</p></div>
+      </div>
+      <div class="service-row">
+        <div class="idx">09</div>
+        <div class="body"><h3>Tax-Compliant &amp; Audit-Ready Books</h3><p>Books maintained to GAAP and IRS standards, with CPA support available for accounting needs.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="principles">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Why work with me</span>
+      <h2>Four things I don't compromise on.</h2>
+    </div>
+    <div class="principles">
+      <div class="principle"><span class="mono">ACCURACY</span><h3>Every figure checked</h3><p>Reconciled to the cent before it's called done.</p></div>
+      <div class="principle"><span class="mono">EFFICIENCY</span><h3>No wasted cycles</h3><p>Cloud tools set up to keep your bookkeeping fast and repeatable.</p></div>
+      <div class="principle"><span class="mono">EFFECTIVENESS</span><h3>Reports you'll use</h3><p>Financials built for decisions, not just filing cabinets.</p></div>
+      <div class="principle"><span class="mono">QUALITY</span><h3>100% client fulfilment</h3><p>I stand behind every deliverable I send.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding:0; border-bottom:none;">
+  <div class="wrap" style="padding:64px 0;">
+    <div class="contact-panel">
+      <div>
+        <span class="eyebrow" style="color:#C8E0CC;">Get in touch</span>
+        <h2>I'm just one click away.</h2>
+        <p>Looking for an expert accountant or bookkeeper to manage your business finances accurately and efficiently? Kindly message me before placing any order so we can go over your needs first.</p>
+        <p class="contact-note">Replace the links below with your Fiverr profile URL and email address before publishing.</p>
+      </div>
+      <div class="contact-actions">
+        <a class="fill" href="https://www.fiverr.com/" target="_blank" rel="noopener">Message me on Fiverr</a>
+        <a class="outline" href="mailto:[email protected]">Email me directly</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> LedgerLoop — Cloud Accounting &amp; Bookkeeping by Md. Ataya Rabbi. Built with care, reconciled to zero.
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const tb = document.getElementById('tbStatus');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ tb.classList.add('show'); }
+    });
+  }, {threshold:0.4});
+  io.observe(tb);
+  // also trigger on load in case it's already in view
+  window.addEventListener('load', ()=> setTimeout(()=>tb.classList.add('show'), 400));
+</script>
+
+</body>
+</html>
