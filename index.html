@@ -58,18 +58,52 @@
     display:flex; align-items:center; justify-content:space-between;
     padding:18px 0;
   }
+  [data-mesh-id=comp-knzxx5jainlineContent] {
+    height: auto;
+    width: 456px;
+}
+  [data-mesh-id=comp-knzxx5jainlineContent-gridContainer] {
+    position: static;
+    display: grid;
+    height: auto;
+    width: 100%;
+    min-height: auto;
+    grid-template-rows: 1fr;
+    grid-template-columns: 100%;
+}
+  [data-mesh-id=comp-knzxx5jainlineContent-gridContainer] > [id="comp-knzxx5lg"], [data-mesh-id=comp-knzxx5jainlineContent-gridContainer] > interact-element > [id="comp-knzxx5lg"] {
+    position: relative;
+    margin: 0px 0px 0px 0;
+    left: 0px;
+    grid-area: 1 / 1 / 2 / 2;
+    justify-self: start;
+    align-self: start;
+}
+  #comp-knzxx5lg {
+    width: 456px;
+}
+#comp-knzxx5lg {
+    --rd: 0px;
+    --shd: 0 0 0 rgba(0, 0, 0, 0);
+    --bg: var(--color_18);
+    --brd: var(--color_12);
+    --alpha-brd: 1;
+    --brw: 0px;
+    --alpha-bg: 0;
+}
   .brand{
     display:flex; align-items:center; gap:10px;
     font-family:'Fraunces',serif; font-weight:600; font-size:1.05rem;
     letter-spacing:0.01em;
   }
   .brand .mark{
-    width:30px;height:30px;border-radius:50%;
+    width:34px;height:34px;border-radius:50%;
     border:1.5px solid var(--forest);
     display:flex;align-items:center;justify-content:center;
-    font-family:'IBM Plex Mono',monospace; font-size:0.72rem; font-weight:600;
-    color:var(--forest);
+    background:var(--card);
+    flex-shrink:0;
   }
+  .brand .mark svg{ width:20px; height:20px; }
   nav.links{ display:flex; gap:28px; font-size:0.88rem; }
   nav.links a{ text-decoration:none; color:var(--ink-soft); transition:color .2s; }
   nav.links a:hover{ color:var(--forest); }
@@ -195,14 +229,32 @@
     border:1px solid var(--rule); background:var(--card);
   }
   .service-row{
-    display:grid; grid-template-columns:64px 1fr; gap:0;
+    display:grid; grid-template-columns:76px 1fr; gap:0;
     border-bottom:1px solid var(--rule);
   }
   .service-row:last-child{ border-bottom:none; }
   .service-row .idx{
-    font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--brass);
-    padding:22px 0 22px 24px; border-right:1px solid var(--rule);
-    display:flex; align-items:flex-start;
+    font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--brass);
+    padding:20px 0; border-right:1px solid var(--rule);
+    display:flex; flex-direction:column; align-items:center; justify-content:flex-start; gap:8px;
+  }
+  .service-row .idx .icon-wrap{
+    width:34px; height:34px; border-radius:50%;
+    background:var(--paper-dim);
+    display:flex; align-items:center; justify-content:center;
+    opacity:0; transform:translateY(8px) scale(0.8);
+    transition:opacity .5s ease, transform .5s ease;
+  }
+  .service-row.reveal .idx .icon-wrap{ opacity:1; transform:translateY(0) scale(1); }
+  .service-row .idx svg{
+    width:18px; height:18px; color:var(--forest);
+    animation:none;
+  }
+  .service-row.reveal .idx svg{ animation:icon-pop .6s ease .1s backwards; }
+  @keyframes icon-pop{
+    0%{ transform:scale(0.6) rotate(-8deg); opacity:0; }
+    60%{ transform:scale(1.12) rotate(3deg); opacity:1; }
+    100%{ transform:scale(1) rotate(0deg); opacity:1; }
   }
   .service-row .body{ padding:20px 24px; }
   .service-row h3{ font-size:1.05rem; font-weight:600; margin-bottom:4px; }
@@ -221,38 +273,17 @@
   .principle h3{ font-size:1.05rem; margin-top:10px; }
   .principle p{ margin-top:8px; color:var(--ink-soft); font-size:0.88rem; }
 
-
-  /* ---------- social links ---------- */
+  /* ---------- social bar (no list styling at all) ---------- */
   .social-bar{
     width:100%;
     margin-top:8px;
-  }
-  .social-list{
-    list-style:none !important;
-    list-style-type:none !important;
-    margin:0 !important;
-    padding:0 !important;
     display:flex;
     align-items:center;
     justify-content:center;
     gap:14px;
-  }
-  .social-list li::before,
-  .social-list li::after{
-    content:none !important;
-    display:none !important;
+    flex-wrap:wrap;
   }
   .social-item{
-    margin:0;
-    padding:0;
-  }
-  .mjBlSA, .AYCJGp {
-    box-shadow: var(--shd, 0 0 0 #0000);
-    border-radius: var(--corvid-border-radius, var(--rd, 0px));
-    background-color: var(--corvid-background-color, rgba(var(--bg), var(--alpha-bg, 0)));
-    border: solid var(--corvid-border-color, rgba(var(--brd), var(--alpha-brd, 1))) var(--corvid-border-width, var(--brw, 0));
-}
-  .social-item a{
     width:48px;
     height:48px;
     border:1px solid rgba(247,244,236,0.55);
@@ -264,19 +295,19 @@
     transition:all .2s ease;
     background:rgba(255,255,255,0.04);
   }
-  .social-item a:hover{
+  .social-item:hover{
     transform:translateY(-3px);
     background:var(--paper);
     border-color:var(--paper);
   }
   .social-item img{
-    width:25px;
-    height:25px;
+    width:24px;
+    height:24px;
     display:block;
   }
   @media(max-width:640px){
-    .social-list{ gap:10px; }
-    .social-item a{ width:44px; height:44px; }
+    .social-bar{ gap:10px; }
+    .social-item{ width:44px; height:44px; }
   }
 
   /* ---------- contact / footer ---------- */
@@ -288,16 +319,6 @@
   @media(max-width:800px){ .contact-panel{ grid-template-columns:1fr; padding:44px 26px; } }
   .contact-panel h2{ color:var(--paper); font-size:1.9rem; }
   .contact-panel p{ color:#D8E3D9; margin-top:14px; max-width:44ch; }
-  .contact-actions{ display:flex; flex-direction:column; gap:12px; }
-  .contact-actions a{
-    text-decoration:none; text-align:center;
-    font-family:'IBM Plex Mono',monospace; font-size:0.85rem;
-    padding:14px 20px; border-radius:2px;
-    display:flex; align-items:center; justify-content:center; gap:10px;
-  }
-  .contact-actions svg{ width:18px; height:18px; flex-shrink:0; }
-  .contact-actions .fill{ background:var(--paper); color:var(--forest-dark); }
-  .contact-actions .outline{ border:1px solid var(--paper); color:var(--paper); }
   .contact-note{
     font-size:0.78rem; color:#B9CCBB; margin-top:18px; font-family:'IBM Plex Mono',monospace;
   }
@@ -312,6 +333,8 @@
   @media (prefers-reduced-motion: reduce){
     html{ scroll-behavior:auto; }
     .tb-status{ transition:none; }
+    .service-row .idx .icon-wrap{ transition:none; }
+    .service-row.reveal .idx svg{ animation:none; }
   }
 </style>
 </head>
@@ -319,7 +342,16 @@
 
 <header>
   <div class="wrap nav">
-    <div class="brand"><span class="mark">LL</span> LedgerLoop</div>
+    <div class="brand">
+      <span class="mark">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17 5.2A11 11 0 1 1 5.6 12.4" stroke="#2E4F3A" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M5.6 6 L5.6 12.4 L12 12.4" stroke="#2E4F3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M11 18.5 L14.3 21.8 L21.5 14" stroke="#A9834F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      LedgerLoop
+    </div>
     <nav class="links">
       <a href="#about">About</a>
       <a href="#services">Services</a>
@@ -387,42 +419,52 @@
       <p>Full-cycle bookkeeping support — from setup to clean, tax-ready financials.</p>
     </div>
     <div class="service-book">
+
       <div class="service-row">
-        <div class="idx">01</div>
+        <div class="idx"><span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09A1.65 1.65 0 0 0 15 4.6a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span></div>
         <div class="body"><h3>Software Setup</h3><p>QuickBooks Online and Xero set up correctly from day one, with a chart of accounts built for your business.</p></div>
       </div>
+
       <div class="service-row">
-        <div class="idx">02</div>
+        <div class="idx"><span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 12.6 12.4 20.8a2 2 0 0 1-2.8 0l-7.4-7.4a2 2 0 0 1 0-2.8L10.2 2.4A2 2 0 0 1 11.6 2H18a2 2 0 0 1 2 2v6.4a2 2 0 0 1-.6 1.4z"/><circle cx="15.5" cy="7.5" r="1.5"/></svg></span></div>
         <div class="body"><h3>Transaction Categorization</h3><p>Expenses tracked and categorised accurately, so every report reflects reality.</p></div>
       </div>
+
       <div class="service-row">
-        <div class="idx">03</div>
+        <div class="idx"><span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6M9 9h1"/></svg></span></div>
         <div class="body"><h3>Invoices, Bills &amp; Journals</h3><p>Invoices, bills, adjusting journals, refunds, credit notes, inventory purchases, and bank transactions.</p></div>
       </div>
+
       <div class="service-row">
-        <div class="idx">04</div>
+        <div class="idx"><span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 10v.01M18 14v.01"/></svg></span></div>
         <div class="body"><h3>Payroll</h3><p>Payroll setup and management with QuickBooks Payroll and Gusto.</p></div>
       </div>
+
       <div class="service-row">
-        <div class="idx">05</div>
+        <div class="idx"><span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.36"/><path d="M21 3v6h-6"/></svg></span></div>
         <div class="body"><h3>Clean-up &amp; Catch-up</h3><p>Behind on your books? I clean up and catch up transactions to bring everything current.</p></div>
       </div>
+
       <div class="service-row">
-        <div class="idx">06</div>
+        <div class="idx"><span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 7l-3 6a3 3 0 0 0 6 0z"/><path d="M19 7l-3 6a3 3 0 0 0 6 0z"/><path d="M5 7h14"/></svg></span></div>
         <div class="body"><h3>Reconciliation</h3><p>Bank, credit card, and PayPal reconciliation, done monthly or on your schedule.</p></div>
       </div>
+
       <div class="service-row">
-        <div class="idx">07</div>
+        <div class="idx"><span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></span></div>
         <div class="body"><h3>AR &amp; AP Management</h3><p>Accounts receivable and payable maintained so cash flow stays visible and current.</p></div>
       </div>
+
       <div class="service-row">
-        <div class="idx">08</div>
+        <div class="idx"><span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></span></div>
         <div class="body"><h3>Financial Reports</h3><p>Balance sheets, profit &amp; loss, and cash flow statements — ready whenever you need them.</p></div>
       </div>
+
       <div class="service-row">
-        <div class="idx">09</div>
+        <div class="idx"><span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9 8 11 4.6-2 8-6 8-11V5z"/><path d="M9 12l2 2 4-4"/></svg></span></div>
         <div class="body"><h3>Tax-Compliant &amp; Audit-Ready Books</h3><p>Books maintained to GAAP and IRS standards, with CPA support available for accounting needs.</p></div>
       </div>
+
     </div>
   </div>
 </section>
@@ -449,73 +491,12 @@
         <span class="eyebrow" style="color:#C8E0CC;">Get in touch</span>
         <h2>I'm just one click away.</h2>
         <p>Looking for an expert accountant or bookkeeper to manage your business finances accurately and efficiently? Kindly message me before placing any order so we can go over your needs first.</p>
-        <p class="contact-note">Reach out any time — I typically respond within a day.</p>
-        <div id="social-bar" class="social-bar">
-  <ul class="social-list" aria-label="Social Bar">
-
-    <!-- WhatsApp -->
-    <li class="social-item">
-      <a href="https://wa.me/8801913147748"
-         target="_blank"
-         rel="noreferrer noopener"
-         aria-label="WhatsApp">
-        <img
-          src="https://cdn.simpleicons.org/whatsapp/25D366"
-          alt="WhatsApp"
-          width="25"
-          height="25">
-      </a>
-    </li>
-
-    <!-- LinkedIn -->
-    <li class="social-item">
-      <a href="https://www.linkedin.com/in/atayarabbi/"
-         target="_blank"
-         rel="noreferrer noopener"
-         aria-label="LinkedIn">
-        <img
-          src="https://cdn.simpleicons.org/linkedin/0A66C2"
-          alt="LinkedIn"
-          width="25"
-          height="25">
-      </a>
-    </li>
-
-    <!-- Gmail -->
-    <li class="social-item">
-      <a href="mailto:atayarabbi44544@gmail.com"
-         aria-label="Gmail">
-        <img
-          src="https://cdn.simpleicons.org/gmail/EA4335"
-          alt="Gmail"
-          width="25"
-          height="25">
-      </a>
-    </li>
-
-    <!-- Fiverr -->
-    <li class="social-item">
-      <a href="https://www.fiverr.com/s/9d2PBKA"
-         target="_blank"
-         rel="noreferrer noopener"
-         aria-label="Fiverr">
-        <img
-          src="https://cdn.simpleicons.org/fiverr/1DBF73"
-          alt="Fiverr"
-          width="25"
-          height="25">
-      </a>
-    </li>
-
-  </ul>
-</div>
-      </div>
-      <div class="contact-actions">
-    <div id="comp-knzxx5ja" class="jko4jB comp-knzxx5ja"><div data-mesh-id="comp-knzxx5jainlineContent" data-testid="inline-content" class=""><div data-mesh-id="comp-knzxx5jainlineContent-gridContainer" data-testid="mesh-container-content"><form id="comp-knzxx5lg" class="AYCJGp comp-knzxx5lg wixui-form"><div data-mesh-id="comp-knzxx5lginlineContent" data-testid="inline-content" class=""><div data-mesh-id="comp-knzxx5lginlineContent-gridContainer" data-testid="mesh-container-content"><div id="comp-knzxx5pa" class="Q1MQrw comp-knzxx5pa wixui-text-input pZqgsf"><label for="input_comp-knzxx5pa" class="QyrExM wixui-text-input__label">Enter Your Name </label><div class="nuFEsg"><input name="enter-your name " id="input_comp-knzxx5pa" class="nbaJII has-custom-focus wixui-text-input__input" type="text" placeholder="" aria-invalid="false" maxlength="100" autocomplete="off" aria-required="false" value=""></div></div><div id="comp-knzxx5qe" class="Q1MQrw comp-knzxx5qe wixui-text-input pZqgsf TqroEf"><label for="input_comp-knzxx5qe" class="QyrExM wixui-text-input__label">Enter Your Email</label><div class="nuFEsg"><input name="email" id="input_comp-knzxx5qe" class="nbaJII has-custom-focus wixui-text-input__input" type="email" placeholder="" required="" aria-invalid="false" pattern="^.+@.+\.[a-zA-Z]{2,63}$" maxlength="250" autocomplete="off" value=""></div></div><div id="comp-ko2nashb" class="Q1MQrw comp-ko2nashb wixui-text-input pZqgsf"><label for="input_comp-ko2nashb" class="QyrExM wixui-text-input__label">Enter Your Subject</label><div class="nuFEsg"><input name="enter-your subject" id="input_comp-ko2nashb" class="nbaJII has-custom-focus wixui-text-input__input" type="text" placeholder="" aria-invalid="false" autocomplete="off" aria-required="false" value=""></div></div><div id="comp-knzxx5qq" class="fRbOAc comp-knzxx5qq wixui-text-box bCYfl0"><label for="textarea_comp-knzxx5qq" class="P3lL3X wixui-text-box__label">Message</label><textarea id="textarea_comp-knzxx5qq" class="XXgBXC has-custom-focus wixui-text-box__input" placeholder="" aria-required="false" aria-invalid="false"></textarea></div><div class="comp-knzxx5rc mu5PoX" id="comp-knzxx5rc" aria-disabled="false"><button aria-disabled="false" aria-label="Submit" data-testid="buttonElement" class="twJknM wixui-button ZhVEJq"><span class="OR4Nv8 wixui-button__label">Submit</span></button></div><div id="comp-knzxx5rt" class="UwkEpO _v6ohL PO9MfV AWXfZq comp-knzxx5rt wixui-rich-text" data-testid="richTextElement"><p class="font_8 wixui-rich-text__text" style="text-align:right; font-size:15px;"><span style="font-family:avenir-lt-w01_35-light1475496,sans-serif;" class="wixui-rich-text__text"><span class="color_37 wixui-rich-text__text">Thanks for submitting!</span></span></p></div></div></div></form></div></div></div>
+        <p class="contact-note">Reach out any time — I typically respond within a day.</p> 
       </div>
     </div>
+    <div id="comp-knzxx5ja" class="jko4jB comp-knzxx5ja"><div data-mesh-id="comp-knzxx5jainlineContent" data-testid="inline-content" class=""><div data-mesh-id="comp-knzxx5jainlineContent-gridContainer" data-testid="mesh-container-content"><form id="comp-knzxx5lg" class="AYCJGp comp-knzxx5lg wixui-form"><div data-mesh-id="comp-knzxx5lginlineContent" data-testid="inline-content" class=""><div data-mesh-id="comp-knzxx5lginlineContent-gridContainer" data-testid="mesh-container-content"><div id="comp-knzxx5pa" class="Q1MQrw comp-knzxx5pa wixui-text-input pZqgsf"><label for="input_comp-knzxx5pa" class="QyrExM wixui-text-input__label">Enter Your Name </label><div class="nuFEsg"><input name="enter-your name " id="input_comp-knzxx5pa" class="nbaJII has-custom-focus wixui-text-input__input" type="text" placeholder="" aria-invalid="false" maxlength="100" autocomplete="off" aria-required="false" value=""></div></div><div id="comp-knzxx5qe" class="Q1MQrw comp-knzxx5qe wixui-text-input pZqgsf TqroEf"><label for="input_comp-knzxx5qe" class="QyrExM wixui-text-input__label">Enter Your Email</label><div class="nuFEsg"><input name="email" id="input_comp-knzxx5qe" class="nbaJII has-custom-focus wixui-text-input__input" type="email" placeholder="" required="" aria-invalid="false" pattern="^.+@.+\.[a-zA-Z]{2,63}$" maxlength="250" autocomplete="off" value=""></div></div><div id="comp-ko2nashb" class="Q1MQrw comp-ko2nashb wixui-text-input pZqgsf"><label for="input_comp-ko2nashb" class="QyrExM wixui-text-input__label">Enter Your Subject</label><div class="nuFEsg"><input name="enter-your subject" id="input_comp-ko2nashb" class="nbaJII has-custom-focus wixui-text-input__input" type="text" placeholder="" aria-invalid="false" autocomplete="off" aria-required="false" value=""></div></div><div id="comp-knzxx5qq" class="fRbOAc comp-knzxx5qq wixui-text-box bCYfl0"><label for="textarea_comp-knzxx5qq" class="P3lL3X wixui-text-box__label">Message</label><textarea id="textarea_comp-knzxx5qq" class="XXgBXC has-custom-focus wixui-text-box__input" placeholder="" aria-required="false" aria-invalid="false"></textarea></div><div class="comp-knzxx5rc mu5PoX" id="comp-knzxx5rc" aria-disabled="false"><button aria-disabled="false" aria-label="Submit" data-testid="buttonElement" class="twJknM wixui-button ZhVEJq"><span class="OR4Nv8 wixui-button__label">Submit</span></button></div><div id="comp-knzxx5rt" class="UwkEpO _v6ohL PO9MfV AWXfZq comp-knzxx5rt wixui-rich-text" data-testid="richTextElement"><p class="font_8 wixui-rich-text__text" style="text-align:right; font-size:15px;"><span style="font-family:avenir-lt-w01_35-light1475496,sans-serif;" class="wixui-rich-text__text"><span class="color_37 wixui-rich-text__text">Thanks for submitting!</span></span></p></div></div></div></form></div></div></div>
   </div>
- </section>
+</section>
 
 <footer>
   © <span id="year"></span> LedgerLoop — Cloud Accounting &amp; Bookkeeping by Md. Ataya Rabbi. Built with care, reconciled to zero.
@@ -525,14 +506,26 @@
   document.getElementById('year').textContent = new Date().getFullYear();
 
   const tb = document.getElementById('tbStatus');
-  const io = new IntersectionObserver((entries)=>{
+  const io1 = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
       if(e.isIntersecting){ tb.classList.add('show'); }
     });
   }, {threshold:0.4});
-  io.observe(tb);
-  // also trigger on load in case it's already in view
+  io1.observe(tb);
   window.addEventListener('load', ()=> setTimeout(()=>tb.classList.add('show'), 400));
+
+  const rows = document.querySelectorAll('.service-row');
+  const io2 = new IntersectionObserver((entries)=>{
+    entries.forEach((e, i)=>{
+      if(e.isIntersecting){
+        const idx = Array.from(rows).indexOf(e.target);
+        e.target.style.transitionDelay = (idx % 9) * 60 + 'ms';
+        e.target.classList.add('reveal');
+        io2.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.25});
+  rows.forEach(r => io2.observe(r));
 </script>
 
 </body>
