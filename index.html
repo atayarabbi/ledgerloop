@@ -14,6 +14,7 @@
     --ink-soft:#4B5A66;
     --forest:#2E4F3A;
     --forest-dark:#1F3A29;
+    --forest-deep:#16281C;
     --brass:#A9834F;
     --brass-soft:#C8A876;
     --rule:#D8D2C0;
@@ -23,315 +24,137 @@
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'Inter',sans-serif;
-    line-height:1.55;
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Inter',sans-serif; line-height:1.55;
     -webkit-font-smoothing:antialiased;
   }
-  h1,h2,h3{
-    font-family:'Fraunces',serif;
-    font-weight:600;
-    margin:0;
-    color:var(--ink);
-  }
-  .mono{
-    font-family:'IBM Plex Mono',monospace;
-  }
+  h1,h2,h3{ font-family:'Fraunces',serif; font-weight:600; margin:0; color:var(--ink); }
+  .mono{ font-family:'IBM Plex Mono',monospace; }
   a{color:inherit;}
-  .wrap{
-    max-width:1080px;
-    margin:0 auto;
-    padding:0 32px;
-  }
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 32px; }
   @media(max-width:640px){ .wrap{padding:0 20px;} }
 
   /* ---------- header ---------- */
   header{
     position:sticky; top:0; z-index:50;
-    background:rgba(247,244,236,0.92);
-    backdrop-filter:blur(6px);
+    background:rgba(247,244,236,0.92); backdrop-filter:blur(6px);
     border-bottom:1px solid var(--rule);
   }
-  .nav{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:18px 0;
-  }
-  [data-mesh-id=comp-knzxx5jainlineContent] {
-    height: auto;
-    width: 456px;
-}
-  [data-mesh-id=comp-knzxx5jainlineContent-gridContainer] {
-    position: static;
-    display: grid;
-    height: auto;
-    width: 100%;
-    min-height: auto;
-    grid-template-rows: 1fr;
-    grid-template-columns: 100%;
-}
-  [data-mesh-id=comp-knzxx5jainlineContent-gridContainer] > [id="comp-knzxx5lg"], [data-mesh-id=comp-knzxx5jainlineContent-gridContainer] > interact-element > [id="comp-knzxx5lg"] {
-    position: relative;
-    margin: 0px 0px 0px 0;
-    left: 0px;
-    grid-area: 1 / 1 / 2 / 2;
-    justify-self: start;
-    align-self: start;
-}
-  #comp-knzxx5lg {
-    width: 456px;
-}
-#comp-knzxx5lg {
-    --rd: 0px;
-    --shd: 0 0 0 rgba(0, 0, 0, 0);
-    --bg: var(--color_18);
-    --brd: var(--color_12);
-    --alpha-brd: 1;
-    --brw: 0px;
-    --alpha-bg: 0;
-}
+  .nav{ display:flex; align-items:center; justify-content:space-between; padding:18px 0; }
   .brand{
     display:flex; align-items:center; gap:10px;
-    font-family:'Fraunces',serif; font-weight:600; font-size:1.05rem;
-    letter-spacing:0.01em;
+    font-family:'Fraunces',serif; font-weight:600; font-size:1.05rem; letter-spacing:0.01em;
   }
   .brand .mark{
-    width:34px;height:34px;border-radius:50%;
-    border:1.5px solid var(--forest);
-    display:flex;align-items:center;justify-content:center;
-    background:var(--card);
-    flex-shrink:0;
+    width:34px;height:34px;border-radius:50%; border:1.5px solid var(--forest);
+    display:flex;align-items:center;justify-content:center; background:var(--card); flex-shrink:0;
   }
   .brand .mark svg{ width:20px; height:20px; }
   nav.links{ display:flex; gap:28px; font-size:0.88rem; }
   nav.links a{ text-decoration:none; color:var(--ink-soft); transition:color .2s; }
   nav.links a:hover{ color:var(--forest); }
   .nav-cta{
-    font-size:0.82rem; padding:9px 18px;
-    background:var(--forest); color:var(--paper);
-    border-radius:2px; text-decoration:none;
-    font-family:'IBM Plex Mono',monospace;
+    font-size:0.82rem; padding:9px 18px; background:var(--forest); color:var(--paper);
+    border-radius:2px; text-decoration:none; font-family:'IBM Plex Mono',monospace;
     transition:background .2s;
   }
   .nav-cta:hover{ background:var(--forest-dark); }
   @media(max-width:720px){ nav.links{ display:none; } }
 
-  /* ---------- hero: open ledger ---------- */
+  /* ---------- hero ---------- */
   .hero{
-    padding:72px 0 40px;
+    position:relative; overflow:hidden;
+    background:
+      repeating-linear-gradient(0deg, rgba(247,244,236,0.05) 0px, rgba(247,244,236,0.05) 1px, transparent 1px, transparent 42px),
+      radial-gradient(ellipse at 75% 15%, rgba(169,131,79,0.35) 0%, transparent 55%),
+      linear-gradient(135deg, var(--forest) 0%, var(--forest-dark) 55%, var(--forest-deep) 100%);
+    color:var(--paper);
+    padding:110px 0 96px;
+    text-align:center;
   }
-  #comp-knzxx5rc {
-    --shc-mutated-brightness: 0, 0, 0;
-    --margin-start: 0px;
-    --margin-end: 0px;
-    --fnt: normal normal normal 16px / 1.4em avenir-lt-w01_35-light1475496, sans-serif;
-    direction: var(--wix-opt-in-direction, ltr);
-    --label-align: center;
-    --label-text-align: center;
-}
-#comp-knzxx5rc {
-    --rd: 0px;
-    --trans1: border-color 0.4s ease 0s, background-color 0.4s ease 0s;
-    --shd: none;
-    --fnt: normal normal normal 16px / 1.4em avenir-lt-w01_35-light1475496, sans-serif;
-    --trans2: color 0.4s ease 0s;
-    --txt: var(--color_36);
-    --brw: 2px;
-    --bg: var(--color_37);
-    --brd: var(--color_37);
-    --bgh: var(--color_36);
-    --brdh: var(--color_37);
-    --txth: var(--color_37);
-    --bgd: 204, 204, 204;
-    --alpha-bgd: 1;
-    --brdd: 204, 204, 204;
-    --alpha-brdd: 1;
-    --txtd: 255, 255, 255;
-    --alpha-txtd: 1;
-    --alpha-bg: 1;
-    --alpha-bgh: 1;
-    --alpha-brd: 1;
-    --alpha-brdh: 1;
-    --alpha-txt: 1;
-    --alpha-txth: 1;
-    --boxShadowToggleOn-shd: none;
-}
-#comp-knzxx5lg {
-    --rd: 0px;
-    --shd: 0 0 0 rgba(0, 0, 0, 0);
-    --bg: var(--color_18);
-    --brd: var(--color_12);
-    --alpha-brd: 1;
-    --brw: 0px;
-    --alpha-bg: 0;
-}
-  #comp-knzxx5rt {
-    visibility: hidden !important;
-}
-#comp-knzxx5rt {
-    --min-height: 20px;
-    --text-direction: var(--wix-opt-in-direction);
-}
-#comp-knzxx5rt {
-    width: 228px;
-    height: auto;
-}
-[data-mesh-id=comp-knzxx5lginlineContent-gridContainer] > [id="comp-knzxx5rt"], [data-mesh-id=comp-knzxx5lginlineContent-gridContainer] > interact-element > [id="comp-knzxx5rt"] {
-    position: relative;
-    margin: 0px 0px 8px 0;
-    left: 228px;
-    grid-area: 6 / 1 / 7 / 2;
-    justify-self: start;
-    align-self: start;
-}
-#comp-knzxx5lg {
-    --rd: 0px;
-    --shd: 0 0 0 rgba(0, 0, 0, 0);
-    --bg: var(--color_18);
-    --brd: var(--color_12);
-    --alpha-brd: 1;
-    --brw: 0px;
-    --alpha-bg: 0;
-}
-  .ledger{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    border:1px solid var(--rule);
-    background:var(--card);
-    box-shadow:0 1px 0 var(--rule), 0 24px 48px -32px rgba(28,43,57,0.35);
-    position:relative;
-  }
-  .ledger::after{
-    content:'';
-    position:absolute; left:50%; top:0; bottom:0; width:1px;
-    background:linear-gradient(var(--rule),var(--rule)) center/1px 100% no-repeat;
-    box-shadow:-6px 0 10px -8px rgba(0,0,0,0.15), 6px 0 10px -8px rgba(0,0,0,0.15);
-  }
-  @media(max-width:800px){
-    .ledger{ grid-template-columns:1fr; }
-    .ledger::after{ display:none; }
-  }
-  .ledger-left, .ledger-right{ padding:48px 44px; }
-  @media(max-width:640px){ .ledger-left, .ledger-right{ padding:32px 26px; } }
-  .eyebrow{
-    font-family:'IBM Plex Mono',monospace; font-size:0.72rem;
-    letter-spacing:0.12em; text-transform:uppercase; color:var(--brass);
-    margin-bottom:16px; display:block;
+  .hero-tagline{
+    font-family:'IBM Plex Mono',monospace; font-size:0.78rem;
+    letter-spacing:0.15em; text-transform:uppercase; color:var(--brass-soft);
+    display:block; margin-bottom:22px;
   }
   .hero h1{
-    font-size:2.5rem; line-height:1.08; letter-spacing:-0.01em;
+    color:var(--paper); font-size:2.7rem; line-height:1.15;
+    letter-spacing:0.01em; max-width:18ch; margin:0 auto;
+    text-transform:uppercase;
   }
-  @media(max-width:640px){ .hero h1{ font-size:1.9rem; } }
-  .hero p.lead{
-    margin-top:18px; color:var(--ink-soft); font-size:1.02rem; max-width:46ch;
+  @media(max-width:640px){ .hero h1{ font-size:1.85rem; } }
+  .hero-sub{
+    margin:26px auto 0; max-width:56ch; color:#DDE6DE; font-size:1.02rem;
   }
-  .hero-ctas{ margin-top:28px; display:flex; gap:14px; flex-wrap:wrap; }
+  .hero-ctas{ margin-top:34px; display:flex; gap:14px; flex-wrap:wrap; justify-content:center; }
   .btn-primary{
-    background:var(--forest); color:var(--paper); text-decoration:none;
-    padding:13px 22px; font-size:0.88rem; font-family:'IBM Plex Mono',monospace;
-    border-radius:2px; transition:background .2s;
+    background:var(--brass); color:var(--forest-deep); text-decoration:none;
+    padding:14px 26px; font-size:0.88rem; font-family:'IBM Plex Mono',monospace;
+    border-radius:2px; transition:background .2s; border:none; cursor:pointer; font-weight:600;
   }
-  .btn-primary:hover{ background:var(--forest-dark); }
+  .btn-primary:hover{ background:var(--brass-soft); }
   .btn-ghost{
-    border:1px solid var(--ink); color:var(--ink); text-decoration:none;
-    padding:12px 22px; font-size:0.88rem; font-family:'IBM Plex Mono',monospace;
+    border:1px solid rgba(247,244,236,0.6); color:var(--paper); text-decoration:none;
+    padding:13px 26px; font-size:0.88rem; font-family:'IBM Plex Mono',monospace;
     border-radius:2px; transition:all .2s;
   }
-  .btn-ghost:hover{ background:var(--ink); color:var(--paper); }
-
-  /* trial balance widget — signature element */
-  .tb-title{
-    font-family:'IBM Plex Mono',monospace; font-size:0.72rem;
-    letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft);
-    margin-bottom:14px; display:flex; justify-content:space-between;
-  }
-  .tb-row{
-    display:flex; justify-content:space-between; align-items:baseline;
-    padding:9px 0; border-bottom:1px dashed var(--rule);
-    font-family:'IBM Plex Mono',monospace; font-size:0.88rem;
-  }
-  .tb-row span:first-child{ color:var(--ink-soft); }
-  .tb-total{
-    display:flex; justify-content:space-between; align-items:center;
-    margin-top:16px; padding-top:14px; border-top:1.5px solid var(--ink);
-    font-family:'IBM Plex Mono',monospace; font-weight:600;
-  }
-  .tb-status{
-    display:inline-flex; align-items:center; gap:6px;
-    color:var(--forest); opacity:0; transform:translateY(4px);
-    transition:opacity .5s ease, transform .5s ease;
-  }
-  .tb-status.show{ opacity:1; transform:translateY(0); }
-  .tb-status .stamp{
-    width:18px;height:18px;border-radius:50%;border:1.5px solid var(--forest);
-    display:flex;align-items:center;justify-content:center;font-size:0.65rem;
-  }
+  .btn-ghost:hover{ background:rgba(247,244,236,0.12); }
 
   /* ---------- section shell ---------- */
   section{ padding:88px 0; border-bottom:1px solid var(--rule); }
   section:last-of-type{ border-bottom:none; }
   .section-head{ margin-bottom:44px; max-width:56ch; }
-  .section-head .eyebrow{ margin-bottom:12px; }
+  .section-head .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:0.72rem;
+    letter-spacing:0.12em; text-transform:uppercase; color:var(--brass);
+    margin-bottom:12px; display:block;
+  }
   .section-head h2{ font-size:1.9rem; letter-spacing:-0.01em; }
   .section-head p{ margin-top:14px; color:var(--ink-soft); }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:0.72rem;
+    letter-spacing:0.12em; text-transform:uppercase; color:var(--brass);
+    margin-bottom:16px; display:block;
+  }
 
-  /* ---------- about / credentials ---------- */
-  .about-grid{
-    display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:start;
-  }
-  @media(max-width:800px){ .about-grid{ grid-template-columns:1fr; gap:36px; } }
-  .about-grid p{ color:var(--ink-soft); margin:0 0 16px; }
-  .credential-list{ list-style:none; margin:0; padding:0; }
-  .credential-list li{
-    display:flex; gap:14px; padding:14px 0; border-bottom:1px solid var(--rule);
-    font-size:0.94rem;
-  }
-  .credential-list li:first-child{ border-top:1px solid var(--rule); }
-  .credential-list .num{
-    font-family:'IBM Plex Mono',monospace; color:var(--brass); font-size:0.8rem; flex-shrink:0;
-  }
+  /* ---------- about ---------- */
+  .about-copy{ max-width:70ch; }
+  .about-copy p{ color:var(--ink-soft); margin:0 0 16px; }
   .tool-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
   .tool-tags span{
     font-family:'IBM Plex Mono',monospace; font-size:0.76rem;
     border:1px solid var(--rule); padding:6px 12px; border-radius:2px; color:var(--ink-soft);
   }
 
-  /* ---------- services: ledger line items ---------- */
-  .service-book{
-    border:1px solid var(--rule); background:var(--card);
-  }
-  .service-row{
-    display:grid; grid-template-columns:76px 1fr; gap:0;
-    border-bottom:1px solid var(--rule);
-  }
-  .service-row:last-child{ border-bottom:none; }
-  .service-row .idx{
-    font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--brass);
-    padding:20px 0; border-right:1px solid var(--rule);
-    display:flex; flex-direction:column; align-items:center; justify-content:flex-start; gap:8px;
-  }
-  .service-row .idx .icon-wrap{
-    width:34px; height:34px; border-radius:50%;
-    background:var(--paper-dim);
+  /* shared animated icon */
+  .icon-wrap{
+    width:36px; height:36px; border-radius:50%; background:var(--paper-dim);
     display:flex; align-items:center; justify-content:center;
     opacity:0; transform:translateY(8px) scale(0.8);
-    transition:opacity .5s ease, transform .5s ease;
+    transition:opacity .5s ease, transform .5s ease; flex-shrink:0;
   }
-  .service-row.reveal .idx .icon-wrap{ opacity:1; transform:translateY(0) scale(1); }
-  .service-row .idx svg{
-    width:18px; height:18px; color:var(--forest);
-    animation:none;
-  }
-  .service-row.reveal .idx svg{ animation:icon-pop .6s ease .1s backwards; }
+  .anim-row.reveal .icon-wrap{ opacity:1; transform:translateY(0) scale(1); }
+  .icon-wrap svg{ width:19px; height:19px; color:var(--forest); }
+  .anim-row.reveal .icon-wrap svg{ animation:icon-pop .6s ease .1s backwards; }
   @keyframes icon-pop{
     0%{ transform:scale(0.6) rotate(-8deg); opacity:0; }
     60%{ transform:scale(1.12) rotate(3deg); opacity:1; }
     100%{ transform:scale(1) rotate(0deg); opacity:1; }
   }
-  .service-row .body{ padding:20px 24px; }
-  .service-row h3{ font-size:1.05rem; font-weight:600; margin-bottom:4px; }
-  .service-row p{ margin:0; color:var(--ink-soft); font-size:0.92rem; }
+
+  /* ---------- services: 3x3 grid ---------- */
+  .service-book{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--rule); border:1px solid var(--rule);
+  }
+  @media(max-width:900px){ .service-book{ grid-template-columns:repeat(2,1fr); } }
+  @media(max-width:600px){ .service-book{ grid-template-columns:1fr; } }
+  .service-row{
+    background:var(--card); padding:26px 22px;
+    display:flex; flex-direction:column; align-items:flex-start; gap:12px;
+  }
+  .service-row h3{ font-size:1.02rem; font-weight:600; margin-bottom:2px; }
+  .service-row p{ margin:0; color:var(--ink-soft); font-size:0.88rem; }
 
   /* ---------- why / principles ---------- */
   .principles{
@@ -339,62 +162,75 @@
     background:var(--rule); border:1px solid var(--rule);
   }
   @media(max-width:800px){ .principles{ grid-template-columns:repeat(2,1fr); } }
-  .principle{
-    background:var(--card); padding:30px 24px;
-  }
+  .principle{ background:var(--card); padding:26px 24px; }
   .principle .mono{ font-size:0.72rem; color:var(--brass); letter-spacing:0.08em; }
   .principle h3{ font-size:1.05rem; margin-top:10px; }
   .principle p{ margin-top:8px; color:var(--ink-soft); font-size:0.88rem; }
 
-  /* ---------- social bar (no list styling at all) ---------- */
+  .credentials-head{ margin:56px 0 20px; }
+  .credentials-head h3{ font-size:1.1rem; }
+  .credentials-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--rule); border:1px solid var(--rule);
+  }
+  @media(max-width:800px){ .credentials-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media(max-width:500px){ .credentials-grid{ grid-template-columns:1fr; } }
+  .credential-card{
+    background:var(--card); padding:22px 20px;
+    display:flex; flex-direction:column; align-items:flex-start; gap:10px;
+  }
+  .credential-card p{ margin:0; font-size:0.85rem; color:var(--ink-soft); line-height:1.4; }
+
+  /* ---------- social bar ---------- */
   .social-bar{
-    width:100%;
-    margin-top:8px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:14px;
-    flex-wrap:wrap;
+    display:flex; align-items:center; justify-content:flex-start;
+    gap:14px; flex-wrap:wrap; margin-top:22px;
   }
   .social-item{
-    width:48px;
-    height:48px;
+    width:44px; height:44px; border-radius:50%;
     border:1px solid rgba(247,244,236,0.55);
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-decoration:none;
-    transition:all .2s ease;
-    background:rgba(255,255,255,0.04);
+    display:flex; align-items:center; justify-content:center;
+    text-decoration:none; transition:all .2s ease;
+    background:rgba(255,255,255,0.04); flex-shrink:0;
   }
-  .social-item:hover{
-    transform:translateY(-3px);
-    background:var(--paper);
-    border-color:var(--paper);
-  }
-  .social-item img{
-    width:24px;
-    height:24px;
-    display:block;
-  }
-  @media(max-width:640px){
-    .social-bar{ gap:10px; }
-    .social-item{ width:44px; height:44px; }
-  }
+  .social-item:hover{ transform:translateY(-3px); background:var(--paper); border-color:var(--paper); }
+  .social-item:hover svg{ color:var(--forest-dark); }
+  .social-item svg{ width:20px; height:20px; color:var(--paper); transition:color .2s ease; }
 
   /* ---------- contact / footer ---------- */
   .contact-panel{
-    background:var(--forest); color:var(--paper);
-    padding:64px 44px; text-align:left;
-    display:grid; grid-template-columns:1.2fr 0.8fr; gap:40px; align-items:center;
+    background:var(--forest); color:var(--paper); padding:64px 44px;
+    display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;
   }
   @media(max-width:800px){ .contact-panel{ grid-template-columns:1fr; padding:44px 26px; } }
   .contact-panel h2{ color:var(--paper); font-size:1.9rem; }
   .contact-panel p{ color:#D8E3D9; margin-top:14px; max-width:44ch; }
-  .contact-note{
-    font-size:0.78rem; color:#B9CCBB; margin-top:18px; font-family:'IBM Plex Mono',monospace;
+  .contact-note{ font-size:0.78rem; color:#B9CCBB; margin-top:18px; font-family:'IBM Plex Mono',monospace; }
+
+  .contact-form{ background:var(--paper); border-radius:4px; padding:32px; color:var(--ink); }
+  .contact-form .form-title{
+    font-family:'IBM Plex Mono',monospace; font-size:0.72rem;
+    letter-spacing:0.1em; text-transform:uppercase; color:var(--brass);
+    margin-bottom:18px; display:block;
   }
+  .form-row{ margin-bottom:16px; }
+  .form-row label{
+    display:block; font-family:'IBM Plex Mono',monospace; font-size:0.72rem;
+    color:var(--ink-soft); margin-bottom:6px; letter-spacing:0.03em;
+  }
+  .form-row input, .form-row textarea{
+    width:100%; border:1px solid var(--rule); background:var(--card);
+    padding:11px 12px; font-family:'Inter',sans-serif; font-size:0.92rem;
+    color:var(--ink); border-radius:2px; resize:vertical;
+  }
+  .form-row input:focus, .form-row textarea:focus{ outline:none; border-color:var(--forest); }
+  .form-row textarea{ min-height:100px; }
+  .form-submit{
+    width:100%; background:var(--forest); color:var(--paper); border:none;
+    padding:13px 20px; font-family:'IBM Plex Mono',monospace; font-size:0.85rem;
+    border-radius:2px; cursor:pointer; transition:background .2s;
+  }
+  .form-submit:hover{ background:var(--forest-dark); }
 
   footer{
     padding:32px 0; text-align:center;
@@ -405,9 +241,8 @@
   :focus-visible{ outline:2px solid var(--forest); outline-offset:2px; }
   @media (prefers-reduced-motion: reduce){
     html{ scroll-behavior:auto; }
-    .tb-status{ transition:none; }
-    .service-row .idx .icon-wrap{ transition:none; }
-    .service-row.reveal .idx svg{ animation:none; }
+    .icon-wrap{ transition:none; }
+    .anim-row.reveal .icon-wrap svg{ animation:none; }
   }
 </style>
 </head>
@@ -435,52 +270,29 @@
   </div>
 </header>
 
-<section class="hero wrap" style="border-bottom:none; padding-top:56px; padding-bottom:0;">
-  <div class="ledger">
-    <div class="ledger-left">
-      <span class="eyebrow">LedgerLoop — Cloud Accounting &amp; Bookkeeping</span>
-      <h1>Your books, balanced — down to the last cent.</h1>
-      <p class="lead">Run by Md. Ataya Rabbi, Chartered Accountant (Part Qualified) with 10+ years managing bookkeeping for small businesses on QuickBooks Online, Xero, and Wave. Accurate, audit-ready, and one message away.</p>
-      <div class="hero-ctas">
-        <a class="btn-primary" href="#contact">Message me before ordering</a>
-        <a class="btn-ghost" href="#services">See services</a>
-      </div>
-    </div>
-    <div class="ledger-right">
-      <div class="tb-title"><span>Trial Balance</span><span>This Month</span></div>
-      <div class="tb-row"><span>Bank &amp; Card Reconciliation</span><span>Reconciled</span></div>
-      <div class="tb-row"><span>Accounts Receivable</span><span>Current</span></div>
-      <div class="tb-row"><span>Accounts Payable</span><span>Current</span></div>
-      <div class="tb-row"><span>Payroll</span><span>Processed</span></div>
-      <div class="tb-row"><span>Financial Statements</span><span>Ready</span></div>
-      <div class="tb-total">
-        <span>Debits = Credits</span>
-        <span class="tb-status" id="tbStatus"><span class="stamp">✓</span> BALANCED</span>
-      </div>
+<section class="hero" style="border-bottom:none;">
+  <div class="wrap">
+    <span class="hero-tagline">"Bookkeeping Brilliance, Financial Excellence."</span>
+    <h1>Accounting Is The Language Of Business Success</h1>
+    <p class="hero-sub">Assists you for all your accounting needs with the best in the industry — accounting and bookkeeping services that are the most comprehensive and concise.</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="#contact">Message me</a>
+      <a class="btn-ghost" href="#services">See services</a>
     </div>
   </div>
 </section>
 
 <section id="about">
-  <div class="wrap about-grid">
-    <div>
-      <span class="eyebrow">About</span>
-      <h2>Precision is the whole job.</h2>
-      <p>LedgerLoop is run by me, Md. Ataya Rabbi — a professional accountant and bookkeeper, certified ProAdvisor of QuickBooks Online and Xero Advisor Certified, with more than 10 years of hands-on experience in cloud accounting and bookkeeping for small businesses.</p>
-      <p>I keep books according to GAAP and IRS rules, so your financials stay tax-compliant and audit-ready year-round — not just at filing time.</p>
-      <p>I believe in 100% client fulfilment through accuracy, efficiency, and quality of every deliverable. Kindly message me before placing any order so we can scope the work properly.</p>
-      <div class="tool-tags">
-        <span>QuickBooks Online</span><span>Xero</span><span>Wave</span><span>Microsoft Excel</span>
-        <span>QuickBooks Payroll</span><span>Gusto</span>
-      </div>
+  <div class="wrap about-copy">
+    <span class="eyebrow">About</span>
+    <h2>Precision is the whole job.</h2>
+    <p>LedgerLoop is run by me, Md. Ataya Rabbi — a professional accountant and bookkeeper, certified ProAdvisor of QuickBooks Online and Xero Advisor Certified, with more than 10 years of hands-on experience in cloud accounting and bookkeeping for small businesses.</p>
+    <p>I keep books according to GAAP and IRS rules, so your financials stay tax-compliant and audit-ready year-round — not just at filing time.</p>
+    <p>I believe in 100% client fulfilment through accuracy, efficiency, and quality of every deliverable. Kindly message me before placing any order so we can scope the work properly.</p>
+    <div class="tool-tags">
+      <span>QuickBooks Online</span><span>Xero</span><span>Wave</span><span>Microsoft Excel</span>
+      <span>QuickBooks Payroll</span><span>Gusto</span>
     </div>
-    <ul class="credential-list">
-      <li><span class="num">01</span> Chartered Accountant (Part Qualified)</li>
-      <li><span class="num">02</span> Certified QuickBooks Online ProAdvisor</li>
-      <li><span class="num">03</span> Xero Advisor Certified</li>
-      <li><span class="num">04</span> 10+ years bookkeeping &amp; cloud accounting experience</li>
-      <li><span class="num">05</span> GAAP &amp; IRS-compliant, audit-ready books</li>
-    </ul>
   </div>
 </section>
 
@@ -493,49 +305,49 @@
     </div>
     <div class="service-book">
 
-      <div class="service-row">
-        <div class="idx"><span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09A1.65 1.65 0 0 0 15 4.6a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span></div>
-        <div class="body"><h3>Software Setup</h3><p>QuickBooks Online and Xero set up correctly from day one, with a chart of accounts built for your business.</p></div>
+      <div class="service-row anim-row">
+        <span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09A1.65 1.65 0 0 0 15 4.6a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
+        <h3>Software Setup</h3><p>QuickBooks Online and Xero set up correctly from day one, with a chart of accounts built for your business.</p>
       </div>
 
-      <div class="service-row">
-        <div class="idx"><span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 12.6 12.4 20.8a2 2 0 0 1-2.8 0l-7.4-7.4a2 2 0 0 1 0-2.8L10.2 2.4A2 2 0 0 1 11.6 2H18a2 2 0 0 1 2 2v6.4a2 2 0 0 1-.6 1.4z"/><circle cx="15.5" cy="7.5" r="1.5"/></svg></span></div>
-        <div class="body"><h3>Transaction Categorization</h3><p>Expenses tracked and categorised accurately, so every report reflects reality.</p></div>
+      <div class="service-row anim-row">
+        <span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 12.6 12.4 20.8a2 2 0 0 1-2.8 0l-7.4-7.4a2 2 0 0 1 0-2.8L10.2 2.4A2 2 0 0 1 11.6 2H18a2 2 0 0 1 2 2v6.4a2 2 0 0 1-.6 1.4z"/><circle cx="15.5" cy="7.5" r="1.5"/></svg></span>
+        <h3>Transaction Categorization</h3><p>Expenses tracked and categorised accurately, so every report reflects reality.</p>
       </div>
 
-      <div class="service-row">
-        <div class="idx"><span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6M9 9h1"/></svg></span></div>
-        <div class="body"><h3>Invoices, Bills &amp; Journals</h3><p>Invoices, bills, adjusting journals, refunds, credit notes, inventory purchases, and bank transactions.</p></div>
+      <div class="service-row anim-row">
+        <span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6M9 9h1"/></svg></span>
+        <h3>Invoices, Bills &amp; Journals</h3><p>Invoices, bills, adjusting journals, refunds, credit notes, inventory purchases, and bank transactions.</p>
       </div>
 
-      <div class="service-row">
-        <div class="idx"><span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 10v.01M18 14v.01"/></svg></span></div>
-        <div class="body"><h3>Payroll</h3><p>Payroll setup and management with QuickBooks Payroll and Gusto.</p></div>
+      <div class="service-row anim-row">
+        <span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 10v.01M18 14v.01"/></svg></span>
+        <h3>Payroll</h3><p>Payroll setup and management with QuickBooks Payroll and Gusto.</p>
       </div>
 
-      <div class="service-row">
-        <div class="idx"><span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.36"/><path d="M21 3v6h-6"/></svg></span></div>
-        <div class="body"><h3>Clean-up &amp; Catch-up</h3><p>Behind on your books? I clean up and catch up transactions to bring everything current.</p></div>
+      <div class="service-row anim-row">
+        <span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.36"/><path d="M21 3v6h-6"/></svg></span>
+        <h3>Clean-up &amp; Catch-up</h3><p>Behind on your books? I clean up and catch up transactions to bring everything current.</p>
       </div>
 
-      <div class="service-row">
-        <div class="idx"><span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 7l-3 6a3 3 0 0 0 6 0z"/><path d="M19 7l-3 6a3 3 0 0 0 6 0z"/><path d="M5 7h14"/></svg></span></div>
-        <div class="body"><h3>Reconciliation</h3><p>Bank, credit card, and PayPal reconciliation, done monthly or on your schedule.</p></div>
+      <div class="service-row anim-row">
+        <span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 7l-3 6a3 3 0 0 0 6 0z"/><path d="M19 7l-3 6a3 3 0 0 0 6 0z"/><path d="M5 7h14"/></svg></span>
+        <h3>Reconciliation</h3><p>Bank, credit card, and PayPal reconciliation, done monthly or on your schedule.</p>
       </div>
 
-      <div class="service-row">
-        <div class="idx"><span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></span></div>
-        <div class="body"><h3>AR &amp; AP Management</h3><p>Accounts receivable and payable maintained so cash flow stays visible and current.</p></div>
+      <div class="service-row anim-row">
+        <span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></span>
+        <h3>AR &amp; AP Management</h3><p>Accounts receivable and payable maintained so cash flow stays visible and current.</p>
       </div>
 
-      <div class="service-row">
-        <div class="idx"><span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></span></div>
-        <div class="body"><h3>Financial Reports</h3><p>Balance sheets, profit &amp; loss, and cash flow statements — ready whenever you need them.</p></div>
+      <div class="service-row anim-row">
+        <span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></span>
+        <h3>Financial Reports</h3><p>Balance sheets, profit &amp; loss, and cash flow statements — ready whenever you need them.</p>
       </div>
 
-      <div class="service-row">
-        <div class="idx"><span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9 8 11 4.6-2 8-6 8-11V5z"/><path d="M9 12l2 2 4-4"/></svg></span></div>
-        <div class="body"><h3>Tax-Compliant &amp; Audit-Ready Books</h3><p>Books maintained to GAAP and IRS standards, with CPA support available for accounting needs.</p></div>
+      <div class="service-row anim-row">
+        <span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9 8 11 4.6-2 8-6 8-11V5z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <h3>Tax-Compliant &amp; Audit-Ready Books</h3><p>Books maintained to GAAP and IRS standards, with CPA support available for accounting needs.</p>
       </div>
 
     </div>
@@ -549,10 +361,52 @@
       <h2>Four things I don't compromise on.</h2>
     </div>
     <div class="principles">
-      <div class="principle"><span class="mono">ACCURACY</span><h3>Every figure checked</h3><p>Reconciled to the cent before it's called done.</p></div>
-      <div class="principle"><span class="mono">EFFICIENCY</span><h3>No wasted cycles</h3><p>Cloud tools set up to keep your bookkeeping fast and repeatable.</p></div>
-      <div class="principle"><span class="mono">EFFECTIVENESS</span><h3>Reports you'll use</h3><p>Financials built for decisions, not just filing cabinets.</p></div>
-      <div class="principle"><span class="mono">QUALITY</span><h3>100% client fulfilment</h3><p>I stand behind every deliverable I send.</p></div>
+      <div class="principle anim-row">
+        <span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span>
+        <span class="mono">ACCURACY</span><h3>Every figure checked</h3><p>Reconciled to the cent before it's called done.</p>
+      </div>
+      <div class="principle anim-row">
+        <span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h8l-1 8 10-12h-8z"/></svg></span>
+        <span class="mono">EFFICIENCY</span><h3>No wasted cycles</h3><p>Cloud tools set up to keep your bookkeeping fast and repeatable.</p>
+      </div>
+      <div class="principle anim-row">
+        <span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></span>
+        <span class="mono">EFFECTIVENESS</span><h3>Reports you'll use</h3><p>Financials built for decisions, not just filing cabinets.</p>
+      </div>
+      <div class="principle anim-row">
+        <span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9 8 11 4.6-2 8-6 8-11V5z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <span class="mono">QUALITY</span><h3>100% client fulfilment</h3><p>I stand behind every deliverable I send.</p>
+      </div>
+    </div>
+
+    <div class="credentials-head">
+      <h3>Credentials</h3>
+    </div>
+    <div class="credentials-grid">
+      <div class="credential-card anim-row">
+        <span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></span>
+        <p>Chartered Accountant (Part Qualified)</p>
+      </div>
+      <div class="credential-card anim-row">
+        <span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 6 21l6-3 6 3-2.5-8.5"/></svg></span>
+        <p>Certified QuickBooks Online ProAdvisor</p>
+      </div>
+      <div class="credential-card anim-row">
+        <span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 6 21l6-3 6 3-2.5-8.5"/></svg></span>
+        <p>Xero Advisor Certified</p>
+      </div>
+      <div class="credential-card anim-row">
+        <span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/><path d="M9 14l2 2 4-4"/></svg></span>
+        <p>Intuit Certified Bookkeeper</p>
+      </div>
+      <div class="credential-card anim-row">
+        <span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+        <p>10+ years bookkeeping &amp; cloud accounting experience</p>
+      </div>
+      <div class="credential-card anim-row">
+        <span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9 8 11 4.6-2 8-6 8-11V5z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <p>GAAP &amp; IRS-compliant, audit-ready books</p>
+      </div>
     </div>
   </div>
 </section>
@@ -564,10 +418,48 @@
         <span class="eyebrow" style="color:#C8E0CC;">Get in touch</span>
         <h2>I'm just one click away.</h2>
         <p>Looking for an expert accountant or bookkeeper to manage your business finances accurately and efficiently? Kindly message me before placing any order so we can go over your needs first.</p>
-        <p class="contact-note">Reach out any time — I typically respond within a day.</p> 
+        <p class="contact-note">Reach out any time — I typically respond within a day.</p>
+
+        <div class="social-bar" aria-label="Social links">
+          <a class="social-item" href="https://wa.me/8801913147748" target="_blank" rel="noreferrer noopener" aria-label="WhatsApp" title="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </a>
+          <a class="social-item" href="https://www.linkedin.com/in/atayarabbi/" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn" title="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><circle cx="12" cy="6" r="2"/><path d="M7.7 16.6 11 7.8M16.3 16.6 13 7.8M8 18h8"/></svg>
+          </a>
+          <a class="social-item" href="https://mail.google.com/mail/?view=cm&fs=1&to=atayarabbi44544@gmail.com" target="_blank" rel="noreferrer noopener" aria-label="Gmail" title="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          </a>
+          <a class="social-item" href="https://www.fiverr.com/s/9d2PBKA" target="_blank" rel="noreferrer noopener" aria-label="Fiverr" title="Fiverr">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg>
+          </a>
+        </div>
       </div>
+
+      <form class="contact-form" id="contactForm" action="https://formsubmit.co/atayarabbi44544@gmail.com" method="POST">
+        <span class="form-title">Send a message</span>
+        <input type="hidden" name="_subject" value="New inquiry from LedgerLoop website">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="true">
+        <div class="form-row">
+          <label for="cf-name">Name</label>
+          <input type="text" id="cf-name" name="name" required maxlength="100" autocomplete="off">
+        </div>
+        <div class="form-row">
+          <label for="cf-email">Email</label>
+          <input type="email" id="cf-email" name="email" required maxlength="250" autocomplete="off">
+        </div>
+        <div class="form-row">
+          <label for="cf-subject">Subject</label>
+          <input type="text" id="cf-subject" name="subject" maxlength="150" autocomplete="off">
+        </div>
+        <div class="form-row">
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send message</button>
+      </form>
     </div>
-    <div id="comp-knzxx5ja" class="jko4jB comp-knzxx5ja"><div data-mesh-id="comp-knzxx5jainlineContent" data-testid="inline-content" class=""><div data-mesh-id="comp-knzxx5jainlineContent-gridContainer" data-testid="mesh-container-content"><form id="comp-knzxx5lg" class="AYCJGp comp-knzxx5lg wixui-form"><div data-mesh-id="comp-knzxx5lginlineContent" data-testid="inline-content" class=""><div data-mesh-id="comp-knzxx5lginlineContent-gridContainer" data-testid="mesh-container-content"><div id="comp-knzxx5pa" class="Q1MQrw comp-knzxx5pa wixui-text-input pZqgsf"><label for="input_comp-knzxx5pa" class="QyrExM wixui-text-input__label">Enter Your Name </label><div class="nuFEsg"><input name="enter-your name " id="input_comp-knzxx5pa" class="nbaJII has-custom-focus wixui-text-input__input" type="text" placeholder="" aria-invalid="false" maxlength="100" autocomplete="off" aria-required="false" value=""></div></div><div id="comp-knzxx5qe" class="Q1MQrw comp-knzxx5qe wixui-text-input pZqgsf TqroEf"><label for="input_comp-knzxx5qe" class="QyrExM wixui-text-input__label">Enter Your Email</label><div class="nuFEsg"><input name="email" id="input_comp-knzxx5qe" class="nbaJII has-custom-focus wixui-text-input__input" type="email" placeholder="" required="" aria-invalid="false" pattern="^.+@.+\.[a-zA-Z]{2,63}$" maxlength="250" autocomplete="off" value=""></div></div><div id="comp-ko2nashb" class="Q1MQrw comp-ko2nashb wixui-text-input pZqgsf"><label for="input_comp-ko2nashb" class="QyrExM wixui-text-input__label">Enter Your Subject</label><div class="nuFEsg"><input name="enter-your subject" id="input_comp-ko2nashb" class="nbaJII has-custom-focus wixui-text-input__input" type="text" placeholder="" aria-invalid="false" autocomplete="off" aria-required="false" value=""></div></div><div id="comp-knzxx5qq" class="fRbOAc comp-knzxx5qq wixui-text-box bCYfl0"><label for="textarea_comp-knzxx5qq" class="P3lL3X wixui-text-box__label">Message</label><textarea id="textarea_comp-knzxx5qq" class="XXgBXC has-custom-focus wixui-text-box__input" placeholder="" aria-required="false" aria-invalid="false"></textarea></div><div class="comp-knzxx5rc mu5PoX" id="comp-knzxx5rc" aria-disabled="false"><button aria-disabled="false" aria-label="Submit" data-testid="buttonElement" class="twJknM wixui-button ZhVEJq"><span class="OR4Nv8 wixui-button__label">Submit</span></button></div><div id="comp-knzxx5rt" class="UwkEpO _v6ohL PO9MfV AWXfZq comp-knzxx5rt wixui-rich-text" data-testid="richTextElement"><p class="font_8 wixui-rich-text__text" style="text-align:right; font-size:15px;"><span style="font-family:avenir-lt-w01_35-light1475496,sans-serif;" class="wixui-rich-text__text"><span class="color_37 wixui-rich-text__text">Thanks for submitting!</span></span></p></div></div></div></form></div></div></div>
   </div>
 </section>
 
@@ -578,27 +470,19 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  const tb = document.getElementById('tbStatus');
-  const io1 = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){ tb.classList.add('show'); }
-    });
-  }, {threshold:0.4});
-  io1.observe(tb);
-  window.addEventListener('load', ()=> setTimeout(()=>tb.classList.add('show'), 400));
-
-  const rows = document.querySelectorAll('.service-row');
+  const animRows = document.querySelectorAll('.anim-row');
+  let n = 0;
   const io2 = new IntersectionObserver((entries)=>{
-    entries.forEach((e, i)=>{
+    entries.forEach((e)=>{
       if(e.isIntersecting){
-        const idx = Array.from(rows).indexOf(e.target);
-        e.target.style.transitionDelay = (idx % 9) * 60 + 'ms';
+        e.target.style.transitionDelay = (n % 9) * 60 + 'ms';
+        n++;
         e.target.classList.add('reveal');
         io2.unobserve(e.target);
       }
     });
   }, {threshold:0.25});
-  rows.forEach(r => io2.observe(r));
+  animRows.forEach(r => io2.observe(r));
 </script>
 
 </body>
